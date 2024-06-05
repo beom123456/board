@@ -1,0 +1,157 @@
+springBoard02 프로젝트 Query 문
+
+select * from tabs;
+
+select * from board_info_table;
+
+delete USER_TABLE;
+
+delete CONTENT_TABLE;
+
+select * from user_table;
+
+select * from content_table;
+
+----------------------------------------------------------------
+
+
+boardJ14 프로젝트 Query 문
+
+select * from CONTENT_TABLE
+order by content_idx;
+
+select board_info_name
+  from board_info_table
+ where board_info_idx=1;
+ 
+-- 글번호	제목	작성자	작성날짜
+select ct.content_idx, ct.content_subject, ut.user_name, 
+       to_char(ct.content_date, 'YYYY-MM-DD hh:mm:ss') content_date
+  from content_table ct, user_table ut
+ where ct.content_writer_idx = ut.user_idx
+   and ct.content_board_idx = 1
+order by ct.content_idx desc;     
+
+desc content_table;
+
+select ut.user_name content_writer_name, ct.content_date, 
+       ct.content_subject, ct.content_text, ct.content_file
+  from content_table ct, user_table ut
+ where ct.content_writer_idx = ut.user_idx
+   and ct.content_idx = 1;
+       
+select content_seq.nextval from dual;       
+
+----------------------------------------------------------------
+
+create sequence user_seq
+start with 1
+increment by 1
+minvalue 0;
+
+drop sequence content_seq;
+create sequence content_seq
+start with 1
+increment by 1
+minvalue 0;
+
+create table board_info_table(
+  board_info_idx     number  constraint BOARD_INFO_PK primary key,
+  board_info_name    varchar2(500) NOT NULL
+);
+
+insert into board_info_table values(1, '자유게시판');
+insert into board_info_table values(2, '유머게시판');
+insert into board_info_table values(3, '정치게시판');
+insert into board_info_table values(4, '스포츠게시판');
+
+select * from board_info_table;
+
+create table user_table(
+  user_idx      number  constraint USER_PK primary key,
+  user_name     varchar2(50) NOT NULL,
+  user_id       varchar2(100) NOT NULL,
+  user_pw       varchar2(100) NOT NULL
+);
+
+create table content_table(
+  content_idx        number constraint CONTENT_PK primary key,
+  content_subject    varchar2(500) NOT NULL,
+  content_text       long NOT NULL,
+  content_file       varchar2(500),
+  content_writer_idx number NOT NULL
+                     constraint CONTENT_FK1 references user_table(user_idx),
+  content_board_idx  number NOT NULL
+                     constraint CONTENT_FK2 references board_info_table(board_info_idx),
+  content_date       date NOT NULL
+);
+
+-- 아이디가 tjoeun 인 회원의 이름 조회하기
+
+desc user_table;
+
+select user_name from user_table 
+ where user_id='tjoeun';
+ -------------------------------------------------------------------------------------------------
+ 댓글 쿼리문 
+ 
+ drop table comment_table  purge;
+drop table content_table purge;
+
+DROP SEQUENCE comment_seq;
+DROP SEQUENCE content_seq;
+
+create table content_table(
+  content_idx        number constraint CONTENT_PK primary key,
+  content_subject    varchar2(500) NOT NULL,
+  content_text       long NOT NULL,
+  content_file       varchar2(500),
+  content_writer_idx number NOT NULL
+                     constraint CONTENT_FK1 references user_table(user_idx),
+  content_board_idx  number NOT NULL
+                     constraint CONTENT_FK2 references board_info_table(board_info_idx),
+  content_date       date NOT NULL
+);
+
+
+create sequence content_seq
+start with 1
+increment by 1
+minvalue 0;
+
+create table comment_table(
+  comment_idx        number constraint comment_PK primary key,
+  comment_text       long NOT NULL,
+  comment_content_idx number NOT NULL,
+  comment_date       date NOT NULL,
+  comment_writer_id varchar2(20) not null
+);
+
+select * from comment_table
+ where comment_idx=5;
+
+
+create sequence comment_seq
+start with 1
+increment by 1
+minvalue 0;
+
+update comment_table
+    set comment_text = '축구하자요'
+    where comment_idx =3;
+
+select * from User_table;
+
+delete from comment_table
+    where comment_idx = 5;
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
