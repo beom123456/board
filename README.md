@@ -1,6 +1,6 @@
-# 🛒 MyShop - 게시판
+# 🛒 게시판 프로잭트 
 
-![MyShop project](https://github.com/beom123456/shoppingMallPj/assets/169109573/0f90836c-6583-4561-9c36-4482c02891ad)
+![image](https://github.com/beom123456/board/assets/169109573/86f04923-0ce4-4f7c-bb89-20a6a521d76a)
 
 ## 🚀 프로젝트 개요
 
@@ -61,10 +61,41 @@
 
 **로그인 페이지**
 
-**Security config**
+- 로그인 페이지 
 
-- 로그인 성공, 실패 시 페이지 이동 
+![image](https://github.com/beom123456/board/assets/169109573/8e41c94a-08ce-4944-9b82-3c7bafeb7dcf)
 
-- 권한별 페이지 접근 설정
-   
-![로그인 페이지](https://github.com/beom123456/shoppingMallPj/assets/169109573/8c16e6a0-1ef0-49c6-a620-a2870a358cc0.jpg)
+---
+
+- 로그인 필수정보 입력 페이지
+
+![image](https://github.com/beom123456/board/assets/169109573/a8903dc6-9357-4011-ad36-b42a53d732db)
+
+---
+
+- 상단 매뉴 변경
+
+![image](https://github.com/beom123456/board/assets/169109573/4371b925-8473-4c84-9736-4707d4396e03)
+
+---
+
+### 3. 댓글 작성
+
+**글 작성**
+
+- 내용 입력 
+
+![image](https://github.com/beom123456/board/assets/169109573/29f8d673-99b5-4751-b686-94d8ee163829)
+
+---
+
+- 작성자, 작성시간 댓글 총 개수 표시
+
+![image](https://github.com/beom123456/board/assets/169109573/171959f0-8b0b-4fd2-8b3a-524e40d9aaa8)
+
+---
+- 수정 삭제 
+
+![image](https://github.com/beom123456/board/assets/169109573/102b8a63-d207-45e6-b6a7-abf0469061f4)
+
+![image](https://github.com/beom123456/board/assets/169109573/9a19d559-7df1-444b-9233-3d99b6e3d0b4)
